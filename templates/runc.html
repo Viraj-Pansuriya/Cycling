@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        body{
+             background-image: url("https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?cs=srgb&dl=pexels-pixabay-235985.jpg&fm=jpg");
+              
+        }
+    </style>
+
+<title> Cycling Database</title>
+
+<body> 
+
+    <center>
+        <h1 style="color: rgb(2, 16, 1);"> Cycling Data base</h1>
+        <h3 style="color: rgb(58, 255, 3);"> Web Application using Django</h3>
+        <hr/>
+        
+        
+        <table border="1">
+            <tr style="color: rgb(240, 191, 31);">
+                <th>cyclist_id</th>
+                <th>name</th>
+                <th>email_id</th>
+                <th>international_rank</th>
+                <th>national_rank</th>
+                <th>highest_speed</th>
+                <th>rating</th>
+                <th>injuries</th>
+                <th>pincode</th>
+                <th>city</th>
+                <th>state_cyl</th>
+                <th>country</th>
+            </tr>
+            
+            {% for result in data%}
+            <tr style="color: rgb(255, 255, 255);">
+               <td>{{result.0}} </td>
+               <td>{{result.1}} </td>
+               <td>{{result.2}} </td>
+               <td>{{result.3}} </td>
+               <td>{{result.4}} </td>
+               <td>{{result.5}} </td>
+               <td>{{result.6}} </td>
+               <td>{{result.7}} </td>
+               <td>{{result.8}} </td>
+               <td>{{result.9}} </td>
+               <td>{{result.10}} </td>
+               <td>{{result.11}} </td>
+              
+            </tr>
+            {% endfor %}
+
+        </table>
+ 
+        <br> 
+        
+        <a href="{% url 'homep'%}"> <button>Home Page </button> </a> 
+        <a href="{% url 'showcyc'%}"> <button>Show Cyclist Data </button></a> <br>
+
+
+    </center>
+</body>
+
+</head>
+
+
+</html>

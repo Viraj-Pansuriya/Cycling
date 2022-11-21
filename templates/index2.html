@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <style>
+        body{
+             background-image: url("https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?cs=srgb&dl=pexels-pixabay-235985.jpg&fm=jpg");
+              
+        }
+    </style>
+
+<title> Event Database</title>
+<title> Cyclist</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body> 
+
+    <center>
+        <h1> Event</h1>
+        <h3> Web Application using Django</h3>
+        <hr/>
+        <form method="POST" action="sorte">
+            {% csrf_token %}
+            <label for="Sort"></label>
+                <select id="Sort" name="Sort">
+                    <option value="event_id">event_id</option>
+                    <option value="start_time">start_time</option>
+                    <option value="end_time">end_time</option>
+                    <option value="date">date</option>
+                    <option value="route_length">route_length</option>
+
+                </select>
+                <input type="submit" value="Sort"/>
+        </form>
+
+         <a href="{% url 'inserte' %}"> <button>  Insert Event Data  </button></a> <br>
+        
+        <table border="1">
+            <tr style="color: rgb(240, 191, 31);">
+                <th>event_id</th>
+                <th>start_time</th>
+                <th>end_time</th>
+                <th>date</th>
+                <th>place</th>
+                <th>country</th>
+                <th>state</th>
+                <th>city</th>
+                <th>route_length</th>
+            </tr>
+            
+            {% for result in data%}
+            <tr style="color: rgb(255, 255, 255);">
+               <td>{{result.event_id}} </td>
+               <td>{{result.start_time}} </td>
+               <td>{{result.end_time}} </td>
+               <td>{{result.date}} </td>
+               <td>{{result.place}} </td>
+               <td>{{result.country}} </td>
+               <td>{{result.state}} </td>
+               <td>{{result.city}} </td>
+               <td>{{result.route_length}} </td>
+
+               <td><a href="editeve/{{result.event_id}}"><i class="fa fa-edit fa-lg fa-fw" title="edit"></a></td>
+               <td><a href="deleteeve/{{result.event_id}}" onclick="return confirm('Are you sure to delete ? ')"><i class="fa fa-trash fa-lg fa-fw" title="delete"></a></td>
+            </tr>
+            {% endfor %}
+
+        </table>
+        <br>
+
+        <a href="{% url 'rune'%}" >   <button title="route_length > 2000"> Run query  </button></a>
+
+
+        <a href="{% url 'homep'%}"> <button>Home Page </button> </a> 
+        <a href="{% url 'showcyc'%}"> <button>Show Cyclist Data </button></a> <br>
+
+
+    </center>
+</body>
+
+</head>
+
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        body{
+             background-image: url("https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?cs=srgb&dl=pexels-pixabay-235985.jpg&fm=jpg");
+              
+        }
+    </style>
+
+<title> Cyclist</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body> 
+
+    <center>
+        <h1 style="color: rgb(2, 16, 1);"> Cycling Data base</h1>
+        <h3 style="color: rgb(58, 255, 3);"> Web Application using Django</h3>
+        <hr/>
+        <form method="POST" action="sortc">
+            {% csrf_token %}
+            <label for="Sort"></label>
+                <select id="Sort" name="Sort">
+                    <option value="cyclist_id">cyclist_id</option>
+                    <option value="name">name</option>
+                    <option value="email_id">email_id</option>
+                    <option value="international_rank">international_rank</option>
+                    <option value="national_rank">national_rank</option>
+                    <option value="highest_speed">highest_speed</option>
+                    <option value="rating">rating</option>
+                    <option value="injuries">injuries</option>
+                    <option value="pincode">pincode</option>
+                    <option value="city">city</option>
+                    <option value="state_cyl">state_cyl</option>
+                    <option value="country">country</option>
+                     
+
+                </select>
+                <input type="submit" value="Sort"/>
+        </form>
+
+        <a href="{% url 'insertc' %}"><button>Insert Cyclist Data</button></a> <br>
+        
+        <table border="1">
+            <tr style="color: rgb(240, 191, 31);">
+                <th>cyclist_id</th>
+                <th>name</th>
+                <th>email_id</th>
+                <th>international_rank</th>
+                <th>national_rank</th>
+                <th>highest_speed</th>
+                <th>rating</th>
+                <th>injuries</th>
+                <th>pincode</th>
+                <th>city</th>
+                <th>state_cyl</th>
+                <th>country</th>
+            </tr>
+            
+            {% for result in data%}
+            <tr style="color: rgb(255, 255, 255);">
+               <td>{{result.cyclist_id}} </td>
+               <td>{{result.name}} </td>
+               <td>{{result.email_id}} </td>
+               <td>{{result.international_rank}} </td>
+               <td>{{result.national_rank}} </td>
+               <td>{{result.highest_speed}} </td>
+               <td>{{result.rating}} </td>
+               <td>{{result.injuries}} </td>
+               <td>{{result.pincode}} </td>
+               <td>{{result.city}} </td>
+               <td>{{result.state_cyl}} </td>
+               <td>{{result.country}} </td>
+               <td><a href="editcyc/{{result.cyclist_id}}"><i class="fa fa-edit fa-lg fa-fw" title="edit"></a></td>
+               <td><a href="deletecyc/{{result.cyclist_id}}" onclick="return confirm('Are you sure to delete ? ')"><i class="fa fa-trash fa-lg fa-fw" title="delete"></a></td>
+            </tr>
+            {% endfor %}
+
+        </table>
+        <br> 
+
+        <a href="{% url 'runc'%}" >   <button title="highest_speed > 20 "> Run query  </button></a>
+
+        
+        <a href="{% url 'homep'%}"> <button>Home Page </button> </a> 
+        <a href="{% url 'showeve'%}"> <button>Show Event Data</button></a> <br>
+
+
+    </center>
+</body>
+
+</head>
+
+
+</html>

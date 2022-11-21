@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <style>
+        body{
+             background-image: url("https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?cs=srgb&dl=pexels-pixabay-235985.jpg&fm=jpg");
+              
+        }
+    </style>
+
+
+<title> Event Database</title>
+
+<body> 
+
+    <center>
+        <h1> Edit Data base</h1>
+        <h3> Web Application using Django</h3>
+        <hr/>
+        
+        <form method="POST" action="/updateeve/{{EventModel.event_id}}">
+            {% csrf_token %}
+        
+        <table border="1">
+            <tr>
+                <td> event_id</td>
+                <td> <input type="number" value="{{EventModel.event_id}}" name="event_id" ></td>
+             </tr>
+ 
+             <tr>
+                 <td> start_time</td>
+                 <td> <input type="time" value="{{EventModel.start_time|time:"H:i"}}" name="start_time" ></td>
+             </tr>
+ 
+             <tr>
+                 <td> end_time</td>
+                 <td> <input type="time" value="{{EventModel.end_time|time:"H:i"}}" name="end_time" ></td>
+             </tr>
+ 
+             <tr>
+                 <td> date</td>
+                 <td> <input type="date" value="{{EventModel.date|date:'Y-m-d'}}" name="date" ></td>
+             </tr>
+ 
+             <tr>
+                 <td> place</td>
+                 <td> <input type="text" value="{{EventModel.place}}" name="place" ></td>
+             </tr>
+ 
+             <tr>
+                 <td> country</td>
+                 <td> <input type="text" value="{{EventModel.country}}" name="country" ></td>
+             </tr>
+ 
+             <tr>
+                 <td> state</td>
+                 <td> <input type="text" value="{{EventModel.state}}" name="state" ></td>
+             </tr>
+ 
+ 
+             <tr>
+                 <td> city</td>
+                 <td> <input type="text" value="{{EventModel.city}}" name="city" ></td>
+              </tr>
+ 
+              <tr>
+                 <td> route_length</td>
+                 <td> <input type="number" value="{{EventModel.route_length}}" name="route_length" ></td>
+              </tr>
+ 
+             <tr>
+                 <td> <input type="submit" value="Update Record" ></td>
+                 <td>  {% if messages %}
+                     {% for mess in messages %}
+                     <b style="color: chartreuse"> {{mess}}</b>
+                     {% endfor %}
+                     {% endif %}</td>
+             </tr>
+             
+            
+
+        </table>
+
+        <br>
+
+        <a href="{% url 'showeve'%}">Event Data</a> 
+    
+    </form>
+
+    </center>
+</body>
+
+</head>
+
+
+</html>
